@@ -1,14 +1,13 @@
 
-
 import numpy as np
 import sympy as sp
 
+def biseccion(f, a, b, tol):
 
-def biseccion(F, a, b, tol):
-    f = lambda x: F
+
+
     if (f(a) * f(b) > 0):
-        print("pailas")
-        return
+        return "no se puede calcular"
 
     contador = 0
     while abs(a - b) > tol:
@@ -20,14 +19,13 @@ def biseccion(F, a, b, tol):
             a = c
         contador += 1
 
-    print("Iteraciones bisección: ", contador)
+
     return c
 
 
 def posicion_falsa(f, a, b, tol):
     if f(a) * f(b) > 0:
-        print("pailas")
-        return
+        return "no se puede calcular"
 
     contador = 0
     while True:
@@ -42,7 +40,7 @@ def posicion_falsa(f, a, b, tol):
             a = c
         contador += 1
 
-    print("Iteraciones posición falsa: ", contador)
+
     return c
 
 
@@ -59,6 +57,7 @@ def secante(f, h0, h1, tol):
 
 
 def newton(f, x0, tol, variable = None):
+
     if not variable:
       variable = sp.symbols('x')  # Define 'x' as a symbol
 
