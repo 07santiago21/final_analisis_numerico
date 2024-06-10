@@ -5,6 +5,7 @@ from Tk_EcuacionesDiferencial import Tk_EcuacionesDiferencial
 from Tk_InterpolacionAjuste import Tk_InterpolacionAjuste
 from Tk_SerieTaylor import Tk_SerieTaylor
 from Tk_SistemasEcuacionesLineales import Tk_SistemasEcuacionesLineales
+import sympy as sp
 # Funciones para abrir nuevas ventanas
 
 
