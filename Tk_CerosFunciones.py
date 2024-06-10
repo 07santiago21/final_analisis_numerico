@@ -19,8 +19,8 @@ def answer(name, f, data, tol):
 
              return newton(f, data[0], tol)
 
-
         if len(data) == 1:
+
             return "ingrese los datos correctamente"
 
         elif name == "Bisección":
@@ -98,8 +98,9 @@ def Tk_CerosFunciones(root):
         else:
             f = convertir_funcion(function)
 
-        print(answer(selected_method, f, data, tolerance_))
-
+        respuesta = answer(selected_method, f, data, tolerance_)
+        ttk.Label(frame_inputs, text="la respuesta es :" + str(respuesta) , background="#ffcccc", font=("Helvetica", 14)).grid(row=4, column=0,
+        padx = 10, pady = 5)
 
 
     # Botón de Generar
