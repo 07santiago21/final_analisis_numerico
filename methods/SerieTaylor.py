@@ -9,8 +9,8 @@ datos de entrada:
     n: grado del polinomio
 """
 #funcion - punto inicial y grado de polinomio
-def Serie_Taylor(f,x0,n):
-    x = sp.symbols("x")
+def Serie_Taylor(f,x0,n,x):
+
     polinomio = 0
     for k in range(1,n+1):
         df = sp.diff(f,x,k)

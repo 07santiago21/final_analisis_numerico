@@ -45,10 +45,10 @@ def Tk_CerosFunciones(root):
     new_window.title("Ceros de Funciones")
     new_window.geometry("1200x700")  # Tamaño de la ventana
 
-    new_window.configure(bg="#0068ee")  # Fondo de la ventana
-
+    new_window.configure(bg="#0050ee")  # Fondo de la ventana
+    ttk.Button(new_window, style="Accent.TButton", text="volver", command=new_window.destroy).pack(pady=10)
     # Crear el título
-    title = ttk.Label(new_window, text="Ceros de funciones", font=("Helvetica", 24), background="#ffcccc")
+    title = ttk.Label(new_window, text="Ceros de funciones", font=("Helvetica", 24), background="#0050ee")
     title.pack(pady=10)
 
     # Crear un frame para las entradas
@@ -56,25 +56,25 @@ def Tk_CerosFunciones(root):
     frame_inputs.pack(pady=10)
 
     # Función de entrada
-    ttk.Label(frame_inputs, text="Función:", background="#ffcccc", font=("Helvetica", 14)).grid(row=0, column=0,
+    ttk.Label(frame_inputs, text="Función:", background="#0068ee", font=("Helvetica", 14)).grid(row=0, column=0,
                                                                                                 padx=10, pady=5)
     function_entry = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     function_entry.grid(row=0, column=1, padx=10, pady=5)
 
     # Punto a
-    ttk.Label(frame_inputs, text="dato inicial o intervalo(separado por comas) :", background="#ffcccc", font=("Helvetica", 14)).grid(row=1, column=0,
+    ttk.Label(frame_inputs, text="dato inicial o intervalo(separado por comas) :", background="#0068ee", font=("Helvetica", 14)).grid(row=1, column=0,
                                                                                                 padx=10, pady=5)
     a_entry = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     a_entry.grid(row=1, column=1, padx=10, pady=5)
 
     # Punto b
-    ttk.Label(frame_inputs, text="Exactitud:", background="#ffcccc", font=("Helvetica", 14)).grid(row=2, column=0,
+    ttk.Label(frame_inputs, text="Exactitud:", background="#0068ee", font=("Helvetica", 14)).grid(row=2, column=0,
                                                                                                 padx=10, pady=5)
     tolerance = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     tolerance.grid(row=2, column=1, padx=10, pady=5)
 
     # Selección del método
-    ttk.Label(frame_inputs, text="Método:", background="#ffcccc", font=("Helvetica", 14)).grid(row=3, column=0, padx=10,
+    ttk.Label(frame_inputs, text="Método:", background="#0068ee", font=("Helvetica", 14)).grid(row=3, column=0, padx=10,
                                                                                                pady=5)
     method_combobox = ttk.Combobox(frame_inputs, values=["Bisección", "Newton", "Falsa posición", "Secante"],
                                    font=("Helvetica", 14), state="readonly")
@@ -111,6 +111,6 @@ def Tk_CerosFunciones(root):
 
     # Ajustes de estilo
     style = ttk.Style()
-    style.configure("My.TFrame", background="#ffcccc")
+    style.configure("My.TFrame", background="#0068ee")
     style.configure("Accent.TButton", font=("Helvetica", 14), background="#00ccff", foreground="#000000", relief="flat")
     style.map("Accent.TButton", background=[('active', '#00ccff')])

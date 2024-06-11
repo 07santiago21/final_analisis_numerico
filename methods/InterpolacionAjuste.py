@@ -81,6 +81,8 @@ def minimos_cuadrados(Dx: np.ndarray, Dy: np.ndarray) -> Tuple[float, float]:
 
     return a0, a1
 
+
+
 #graficar polinomios
 def plot_graph(Px: np.ndarray, Ty: np.ndarray, ux: np.ndarray, poly_values: Union[int, float, np.ndarray],
                xlabel: str, ylabel: str, title: str, label_data: str = 'Datos O', label_poly: str = 'Polinomio'):
