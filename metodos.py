@@ -386,3 +386,26 @@ def runge_kutta_4(f, a, b, c0, h):
         k4 = h * f(t[i] + h, yeu[i] + k3 )
         yeu.append(yeu[i] + ((k1 + 2 * k2 + 2 * k3 + k4))/ 6)
     return t, yeu
+
+
+
+
+import ast
+A_= "[-3., 2., 1.], [6., -8., -2.], [1., -1., -2.]"
+A_string = f'[{A_}]'
+A_M = ast.literal_eval(A_string)
+list_of_lists = [[float(item) for item in sublist] for sublist in A_M]
+A_M = np.array(list_of_lists)
+
+print(A_M)
+
+
+
+B_= "[2., 1., 3.]"
+B_string = f'{B_}'
+B_M = ast.literal_eval(B_string)
+list_of_lists_B = [float(sublist) for sublist in B_M]
+B_M = np.array(list_of_lists_B)
+print(B_M)
+
+

@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 import tkinter as tk
 from tkinter import ttk
@@ -8,6 +8,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from methods.SerieTaylor import *
 import sympy as sp
 import numpy as np
+
+
+
+def mostrar_notificacion(mensaje):
+    messagebox.showwarning("Advertencia", mensaje)
 
 
 def plot_graph(x_data, y_polinomio,y_f):
@@ -65,47 +70,54 @@ def Tk_SerieTaylor(root):
     frame_inputs.pack(pady=10)
 
     # Función de entrada
-    ttk.Label(frame_inputs, text="Función:", background="#0068ee", font=("Helvetica", 14)).grid(row=0, column=0,
+    ttk.Label(frame_inputs, text="Función con (x):", background="#0068ee", font=("Helvetica", 14)).grid(row=0, column=0,
                                                                                                 padx=10, pady=5)
     function_entry = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     function_entry.grid(row=0, column=1, padx=10, pady=5)
 
     # Punto a
-    ttk.Label(frame_inputs, text="punto(x_0)", background="#0068ee",
+    ttk.Label(frame_inputs, text="punto(x_0) (en numero )", background="#0068ee",
               font=("Helvetica", 14)).grid(row=1, column=0,
                                            padx=10, pady=5)
     punto = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     punto.grid(row=1, column=1, padx=10, pady=5)
 
     # Punto b
-    ttk.Label(frame_inputs, text="grado del polinomio:", background="#0068ee", font=("Helvetica", 14)).grid(row=2, column=0,
+    ttk.Label(frame_inputs, text="grado del polinomio(en numero):", background="#0068ee", font=("Helvetica", 14)).grid(row=2, column=0,
                                                                                                   padx=10, pady=5)
     grado_p = ttk.Entry(frame_inputs, width=30, font=("Helvetica", 14))
     grado_p.grid(row=2, column=1, padx=10, pady=5)
 
-
-    # Función para manejar el evento del botón
+    response_label = ttk.Label(frame_inputs, text="", background="#0068ee", font=("Helvetica", 14))
+    response_label.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
     def generate():
 
-        function = function_entry.get()
-        punto_ = float(punto.get())
-        grado = int(grado_p.get())
+        try:
+
+            function = function_entry.get()
+            punto_ = float(punto.get())
+            grado = int(grado_p.get())
 
 
-        x = sp.symbols("x")
-        f = eval(function)
-        print(f"Función: {function}, Punto: {punto_}, grado: {grado}")
+            x = sp.symbols("x")
+            f = eval(function)
+            print(f"Función: {function}, Punto: {punto_}, grado: {grado}")
 
-        respuesta = Serie_Taylor(f, punto_, grado,x)
+            respuesta = Serie_Taylor(f, punto_, grado,x)
+
+        except:
+            mostrar_notificacion("ingrese los datos en el formato solicitado")
 
 
-        on_plot(punto_, f, respuesta, x, frame_plot)
+        try:
+            on_plot(punto_, f, respuesta, x, frame_plot)
 
 
-        ttk.Label(frame_inputs, text="el polinomio es :" + str(respuesta), background="#ffcccc",
-                  font=("Helvetica", 14)).grid(row=4, column=0,
-                                               padx=10, pady=5)
+            response_label.config(text="el polinomio es es: " + str(respuesta),background="#ffcccc")
+        except:
+            mostrar_notificacion("problema al graficar")
+
 
 
 
